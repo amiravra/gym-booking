@@ -20,6 +20,12 @@ chrome_options.add_argument(f"--user-data-dir={user_data_dir}")
 driver = webdriver.Chrome(options=chrome_options)
 driver.get(url= GYM_URL)
 
-#register to the gym
+#login to the gym
 register_button = driver.find_element(By.XPATH, value="//*[@id='home-page']/section[1]/div/div/a[1]/button")
 register_button.click()
+email = driver.find_element(By.ID, value="email-input")
+password = driver.find_element(By.NAME, value="password")
+login = driver.find_element(By.ID, value="submit-button")
+email.send_keys(ACCOUNT_EMAIL)
+password.send_keys(ACCOUNT_PASSWORD)
+login.click()
