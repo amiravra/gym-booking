@@ -1,4 +1,6 @@
 import os
+import time
+
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 
@@ -20,6 +22,7 @@ chrome_options.add_argument(f"--user-data-dir={user_data_dir}")
 driver = webdriver.Chrome(options=chrome_options)
 driver.get(url= GYM_URL)
 
+time.sleep(2)
 #login to the gym
 register_button = driver.find_element(By.XPATH, value="//*[@id='home-page']/section[1]/div/div/a[1]/button")
 register_button.click()
@@ -29,3 +32,11 @@ login = driver.find_element(By.ID, value="submit-button")
 email.send_keys(ACCOUNT_EMAIL)
 password.send_keys(ACCOUNT_PASSWORD)
 login.click()
+
+time.sleep(2)
+#pars all classes
+class_to_book = driver.find_element(By.XPATH, value="//*[@id='book-button-spin-2025-09-09-1800']")
+class_to_book.click()
+print("booked")
+
+#driver.quit()
